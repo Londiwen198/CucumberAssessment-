@@ -1,6 +1,7 @@
 package utils;
 
 import Pages.AddNewuser;
+import Pages.DeleteUser;
 import Pages.adminUserManagement;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -9,6 +10,7 @@ public class Base {
     protected WebDriver driver;
     public static adminUserManagement adminUserManagement;
     public AddNewuser addNewuser;
+    public DeleteUser deleteUser;
 
 
 
@@ -21,6 +23,7 @@ public class Base {
         addNewuser = PageFactory.initElements(driver, AddNewuser.class);
 
         adminUserManagement = PageFactory.initElements(driver, adminUserManagement.class);
+        deleteUser = PageFactory.initElements(driver, DeleteUser.class);
     }
 }
 

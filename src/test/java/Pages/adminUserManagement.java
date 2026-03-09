@@ -21,14 +21,15 @@ public class adminUserManagement {
     WebElement passwordFieldId;
     @FindBy(id = "login-submit")
     WebElement loginButtonId;
-    @FindBy(xpath = "//*[@id=\"app-main-content\"]/section/div[1]/p")
+    @FindBy(xpath = "//*[@id='app-main-content']/section/div[1]/p")
     WebElement verifyLoginIsSuccessfullyXpath;
 
     @FindBy(xpath = "//div[@id='app-root']/nav/div/div[3]/div/button/span[3]")
     WebElement NavAdminButtonXpath;
 
-    @FindBy(xpath = "//*[@id=\"app-root\"]/nav/div[1]/div[3]/div/div/button[4]/span[2]")
-    WebElement NavAdminpanelButtonXpath;
+    @FindBy(xpath="//div[@id='app-root']/nav/div/div[3]/div/div/button[4]/span[2]")
+    WebElement NavAdminPanel;
+
 
     @FindBy(xpath = "//*[@id=\"app-root\"]/div/div[2]/nav/button[3]")
     WebElement NavApprovaltab;
@@ -55,8 +56,6 @@ public class adminUserManagement {
     @FindBy(xpath = "//*[@id=\"app-root\"]/nav/div[1]/div[3]/div/div/button[5]")
     WebElement LogoutButtonXpath;
 
-    @FindBy(xpath = "//*[@id=\"app-root\"]/div/div[3]/div/div[2]/table/tbody/tr/td[7]/div/button[2]")
-    WebElement deleteUserButtonXpath;
 
 
     public adminUserManagement(WebDriver driver) {
@@ -91,24 +90,22 @@ public class adminUserManagement {
         return NavAdminButtonXpath.getText();
     }
 
-    public void login(String email, String password) {
+    public String login(String email, String password) {
         clickNavLoginButton();
         enterUsername(email);
         enterPassword(password);
         clickLoginButton();
-
-
-    }
+        return getLoginSuccessMessage();
+}
 
     public void clickadminButton() {
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(NavAdminButtonXpath));
         NavAdminButtonXpath.click();
     }
 
-
     public void ClickAdminpanel() {
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(NavAdminpanelButtonXpath));
-        NavAdminpanelButtonXpath.click();
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(NavAdminPanel));
+        NavAdminPanel.click();
 
 
     }
@@ -132,7 +129,6 @@ public class adminUserManagement {
                 By.xpath("//td[text()='" + email + "']")
         ));
     }
-
 
     public void clickapprove() {
         new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.visibilityOf(ApproveUserButtonXpath));
@@ -160,7 +156,6 @@ public class adminUserManagement {
         ));
     }
 
-
     public void selectAdminRole() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(clickuserroleDropdownXpath));
@@ -181,14 +176,11 @@ public class adminUserManagement {
         LogoutButtonXpath.click();
     }
 
-    public void deleteUser(String email) {
-        usermanagement();
-        searchUsertopromote(email);
-        new WebDriverWait(driver, Duration.ofSeconds(10))
-                .until(ExpectedConditions.elementToBeClickable(deleteUserButtonXpath));
-        deleteUserButtonXpath.click();
-    }
 
 }
+
+
+
+
 
 

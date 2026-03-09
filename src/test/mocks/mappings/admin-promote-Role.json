@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "PUT",
+    "urlPattern": "/APIDEV/admin/user/[0-9a-fA-F\\-]{36}/role"
+  },
+  "response": {
+    "status": 200,
+    "body": "{ \"message\": \"User updated successfully\", \"Role\": \"Admin\" }",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

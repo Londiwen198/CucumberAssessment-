@@ -8,9 +8,10 @@ import org.testng.Assert;
 import utils.Base;
 import utils.TestDataGenerator;
 
+
 import java.time.Duration;
 
-public class Addnewuser extends Base {
+public class AddnewuserDefinations extends Base {
 
 
     @Given("I am on the Ndosi login screen")

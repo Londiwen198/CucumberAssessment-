@@ -1,16 +1,13 @@
 package utils;
 
-import io.cucumber.java.AfterAll;
+import io.cucumber.java.After;
 
-public class Hooks {
+public class Hooks extends Base {
 
-
-    @AfterAll
-    public static void tearDown() {
-        // Close the browser once after all scenarios
-        Base base = new Base();
-        if (base.driver != null) {
-            base.driver.quit();
+    @After
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
         }
     }
 }

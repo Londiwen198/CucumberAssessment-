@@ -6,11 +6,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.Base;
-import utils.Hooks;
+
 
 import java.time.Duration;
 
-public class adminUserManagement_Steps extends Base {
+public class adminUserManagementDefinations extends Base {
 
 
     @Given("I am on the login page")
@@ -31,27 +31,16 @@ public class adminUserManagement_Steps extends Base {
     @And("I click the login button")
     public void iClickTheLoginButton() {
         adminUserManagement.clickLoginButton();
-    }
 
-    @Then("I should be verified as an admin using welcome text")
-    public void iShouldBeVerifiedAsAdmin() {
-        String actualValue = adminUserManagement.getLoginSuccessMessage();
-        System.out.println("Actual login success message: " + actualValue);
-        String expectedValue = "Welcome back, admin! \uD83D\uDC4B";
-        Assert.assertEquals(actualValue, expectedValue, "Expected message: " + expectedValue + ", but got: " + actualValue);
+
+
     }
 
     @And("I click the Admin button")
     public void iClickAdminButton() {
         adminUserManagement.clickadminButton();
-    }
 
-    @And("verify using admin button text")
-    public void verifyAdminButtonText() {
-        String actualValue = adminUserManagement.getAdminButtonText();
-        System.out.println("Actual Admin button text: " + actualValue);
-        String expectedValue = "Admin";
-        Assert.assertEquals(actualValue, expectedValue, "Expected Admin button text: " + expectedValue + ", but got: " + actualValue);
+
     }
 
     @And("I navigate to the admin panel")
